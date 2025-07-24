@@ -32,7 +32,7 @@ export default function Home() {
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
             style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
-            data-ai-hint="winding road"
+            data-ai-hint="perspective road"
           ></div>
           <div className="relative z-10">
             <Timeline />
@@ -42,7 +42,7 @@ export default function Home() {
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
             style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
-            data-ai-hint="modern city architecture"
+            data-ai-hint="urban scene"
           ></div>
           <div className="relative z-10">
             <Projects projects={projects.slice(0, 3)} showViewAll />
@@ -52,7 +52,7 @@ export default function Home() {
           <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
             style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
-            data-ai-hint="scientific journal"
+            data-ai-hint="flying book"
           ></div>
           <div className="relative z-10">
             <Research />
@@ -62,7 +62,7 @@ export default function Home() {
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
             style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
-            data-ai-hint="person writing"
+            data-ai-hint="construction fields"
           ></div>
           <div className="relative z-10">
             <Blog posts={blogPosts.slice(0, 3)} showViewAll />

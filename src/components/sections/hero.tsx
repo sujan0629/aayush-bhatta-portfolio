@@ -13,7 +13,7 @@ export function Hero() {
           layout="fill"
           objectFit="cover"
           className="opacity-20"
-          data-ai-hint="modern architecture"
+          data-ai-hint="city landscape"
         />
         <div className="absolute inset-0 bg-background/80" />
       </div>
