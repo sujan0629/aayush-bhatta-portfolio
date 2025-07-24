@@ -32,7 +32,7 @@ export default function Home() {
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
             style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
-            data-ai-hint="perspective road"
+            data-ai-hint="winding road"
           ></div>
           <div className="relative z-10">
             <Timeline />

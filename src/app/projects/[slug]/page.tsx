@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { projects } from '@/lib/data';
+import { Project } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
@@ -9,14 +9,32 @@ import { Button } from '@/components/ui/button';
 import { Github, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
-export function generateStaticParams() {
+async function getProject(slug: string): Promise<Project | null> {
+  const res = await fetch(`${process.env.API_BASE_URL}/api/projects/${slug}`, { cache: 'no-store' });
+  if (!res.ok) {
+    // If the project is not found, the API will return a 404, which will trigger this.
+    return null;
+  }
+  return res.json();
+}
+
+// This function is optional, but recommended for performance.
+// It pre-builds static pages for each project at build time.
+export async function generateStaticParams() {
+  const res = await fetch(`${process.env.API_BASE_URL}/api/projects`, { cache: 'no-store' });
+  if (!res.ok) {
+     return [];
+  }
+  const projects: Project[] = await res.json();
+
   return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
-export default function ProjectDetailsPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug);
+
+export default async function ProjectDetailsPage({ params }: { params: { slug: string } }) {
+  const project = await getProject(params.slug);
 
   if (!project) {
     notFound();
