@@ -41,30 +41,32 @@ export function Timeline() {
           <h2 className="text-4xl font-bold tracking-tight">My Journey</h2>
           <p className="text-lg text-muted-foreground mt-2">A timeline of my key milestones and experiences.</p>
         </div>
-        <div className="relative max-w-2xl mx-auto">
+        <div className="relative max-w-4xl mx-auto">
           {/* Vertical line */}
-          <div className="absolute left-5 top-0 h-full w-0.5 bg-border -translate-x-1/2"></div>
+          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2"></div>
           
-          <div className="space-y-8">
+          <div className="space-y-10">
             {timelineEvents.sort((a,b) => parseInt(b.date) - parseInt(a.date)).map((event, index) => (
-              <div key={index} className="relative pl-12">
-                {/* Icon */}
-                <div className="absolute left-5 top-1 -translate-x-1/2 h-10 w-10 flex items-center justify-center rounded-full bg-primary text-primary-foreground z-10">
+              <div key={index} className={`relative flex w-full ${event.side === 'left' ? 'justify-start' : 'justify-end'}`}>
+                 {/* Icon */}
+                <div className={`absolute left-1/2 top-1 -translate-x-1/2 h-10 w-10 flex items-center justify-center rounded-full bg-primary text-primary-foreground z-10`}>
                   {event.icon}
                 </div>
-                
+
                 {/* Card */}
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-xl font-semibold">{event.title}</CardTitle>
-                      <p className="text-sm font-medium text-primary">{event.date}</p>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{event.description}</p>
-                  </CardContent>
-                </Card>
+                <div className="w-full md:w-[calc(50%-2.5rem)]">
+                  <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-xl font-semibold">{event.title}</CardTitle>
+                        <p className="text-sm font-medium text-primary">{event.date}</p>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">{event.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             ))}
           </div>
