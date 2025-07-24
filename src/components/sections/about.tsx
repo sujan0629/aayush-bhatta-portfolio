@@ -14,7 +14,7 @@ const skills = [
 
 export function About() {
   return (
-    <section id="about" className="container mx-auto py-16 px-4">
+    <section id="about" className="container mx-auto py-16 px-4 bg-background">
       <div className="text-center mb-12">
         <h2 className="font-headline text-4xl font-bold">About Me</h2>
         <p className="text-lg text-muted-foreground mt-2">My background, education, and technical skills.</p>

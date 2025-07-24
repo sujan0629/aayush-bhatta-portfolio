@@ -8,14 +8,10 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    // This effect runs once on mount to set the initial theme from localStorage or system preference.
+    // This effect runs once on mount to set the initial theme from localStorage, defaulting to 'light'.
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
     if (savedTheme) {
       setTheme(savedTheme);
-    } else if (systemPrefersDark) {
-      setTheme('dark');
     } else {
       setTheme('light');
     }

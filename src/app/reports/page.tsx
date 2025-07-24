@@ -8,9 +8,9 @@ import { Button } from '@/components/ui/button';
 
 export default function AllReportsPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-secondary">
       <Header />
-      <main className="flex-1 py-16 section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
+      <main className="flex-1 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="font-headline text-5xl font-bold">All Reports</h1>

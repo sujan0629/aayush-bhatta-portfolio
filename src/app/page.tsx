@@ -19,36 +19,16 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <div className="bg-white dark:bg-gray-800 py-4">
-          <About />
-        </div>
-        <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
-          <Timeline />
-        </div>
-        <div className="bg-white dark:bg-gray-800 py-4">
-          <Projects projects={projects.slice(0, 3)} showViewAll />
-        </div>
-        <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
-          <Research />
-        </div>
-        <div className="bg-white dark:bg-gray-800 py-4">
-          <Certifications />
-        </div>
-        <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
-          <Achievements />
-        </div>
-        <div className="bg-white dark:bg-gray-800 py-4">
-          <Gallery />
-        </div>
-         <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
-          <Blog showViewAll />
-        </div>
-        <div className="bg-white dark:bg-gray-800 py-4">
-          <QA />
-        </div>
-        <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
-          <Contact />
-        </div>
+        <About />
+        <Timeline />
+        <Projects projects={projects.slice(0, 3)} showViewAll />
+        <Research />
+        <Certifications />
+        <Achievements />
+        <Gallery />
+        <Blog showViewAll />
+        <QA />
+        <Contact />
       </main>
       <Footer />
     </div>

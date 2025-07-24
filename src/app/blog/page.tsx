@@ -4,9 +4,9 @@ import { Blog } from '@/components/sections/blog';
 
 export default function AllBlogPostsPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-secondary">
       <Header />
-      <main className="flex-1 section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
+      <main className="flex-1 py-16">
         <Blog />
       </main>
       <Footer />
