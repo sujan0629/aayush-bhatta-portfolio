@@ -74,7 +74,10 @@
     @apply scroll-smooth;
   }
   body {
-    /* User-requested bg color #E0E0E0 */
-    @apply bg-[#E0E0E0] text-foreground dark:bg-zinc-950;
+    @apply bg-gray-100 text-foreground dark:bg-gray-900;
   }
+}
+
+.section-bg {
+  @apply bg-no-repeat bg-cover bg-center;
 }

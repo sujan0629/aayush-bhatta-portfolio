@@ -11,23 +11,44 @@ import { Blog } from '@/components/sections/blog';
 import { Achievements } from '@/components/sections/achievements';
 import { QA } from '@/components/sections/qa';
 import { Contact } from '@/components/sections/contact';
+import { projects } from '@/lib/data';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#E0E0E0] dark:bg-zinc-950">
+    <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
         <Hero />
-        <About />
-        <Timeline />
-        <Projects />
-        <Research />
-        <Certifications />
-        <Achievements />
-        <Gallery />
-        <Blog />
-        <QA />
-        <Contact />
+        <div className="bg-white dark:bg-gray-800 py-4">
+          <About />
+        </div>
+        <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
+          <Timeline />
+        </div>
+        <div className="bg-white dark:bg-gray-800 py-4">
+          <Projects projects={projects.slice(0, 3)} showViewAll />
+        </div>
+        <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
+          <Research />
+        </div>
+        <div className="bg-white dark:bg-gray-800 py-4">
+          <Certifications />
+        </div>
+        <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
+          <Achievements />
+        </div>
+        <div className="bg-white dark:bg-gray-800 py-4">
+          <Gallery />
+        </div>
+         <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
+          <Blog showViewAll />
+        </div>
+        <div className="bg-white dark:bg-gray-800 py-4">
+          <QA />
+        </div>
+        <div className="section-bg" style={{backgroundImage: "url('/graph-paper.svg')"}}>
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>

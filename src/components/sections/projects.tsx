@@ -1,41 +1,18 @@
 import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import type { Project } from '@/lib/data';
 
-const projects = [
-  {
-    title: 'Seismic Performance of Reinforced Concrete Buildings',
-    category: 'Academic Project',
-    description: 'A comprehensive study on the seismic behavior of RC frame structures using non-linear time-history analysis in SAP2000.',
-    image: 'https://placehold.co/600x400',
-    hint: 'building blueprint',
-    tags: ['Structural Engineering', 'Seismic Analysis', 'SAP2000'],
-    links: { github: '#', report: '#' },
-  },
-  {
-    title: 'Sustainable Urban Drainage System (SUDS) Design',
-    category: 'Professional Project',
-    description: 'Designed a SUDS for a new residential development, incorporating permeable pavements and green roofs to manage stormwater runoff effectively.',
-    image: 'https://placehold.co/600x400',
-    hint: 'green roof',
-    tags: ['Sustainability', 'Water Resources', 'AutoCAD'],
-    links: { report: '#' },
-  },
-  {
-    title: 'Geotechnical Investigation for a High-Rise Building',
-    category: 'Academic Project',
-    description: 'Led a team to conduct soil testing, analysis, and foundation design recommendations for a proposed 20-story building.',
-    image: 'https://placehold.co/600x400',
-    hint: 'soil core sample',
-    tags: ['Geotechnical', 'Foundation Design', 'Team Project'],
-    links: {},
-  },
-];
+interface ProjectsProps {
+  projects: Project[];
+  showViewAll?: boolean;
+}
 
-export function Projects() {
+export function Projects({ projects, showViewAll = false }: ProjectsProps) {
   return (
     <section id="projects" className="py-16">
       <div className="container mx-auto px-4">
@@ -44,20 +21,27 @@ export function Projects() {
           <p className="text-lg text-muted-foreground mt-2">A selection of my academic and professional work.</p>
         </div>
         <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project, index) => (
-            <Card key={index} className="flex flex-col">
+          {projects.map((project) => (
+            <Card key={project.slug} className="flex flex-col">
               <CardHeader>
                 <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
-                    <Image
-                    src={project.image}
-                    alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
-                    data-ai-hint={project.hint}
-                    />
+                  <Link href={`/projects/${project.slug}`}>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        layout="fill"
+                        objectFit="cover"
+                        data-ai-hint={project.hint}
+                        className="transition-transform duration-300 hover:scale-105"
+                      />
+                  </Link>
                 </div>
                 <Badge variant="default" className="w-fit">{project.category}</Badge>
-                <CardTitle className="font-headline pt-2">{project.title}</CardTitle>
+                <CardTitle className="font-headline pt-2">
+                  <Link href={`/projects/${project.slug}`} className="hover:underline">
+                    {project.title}
+                  </Link>
+                </CardTitle>
                 <div className="flex flex-wrap gap-2 pt-1">
                   {project.tags.map((tag) => (
                     <Badge key={tag} variant="secondary">{tag}</Badge>
@@ -77,10 +61,10 @@ export function Projects() {
                     </Button>
                   )}
                   {project.links.report && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={project.links.report} target="_blank" rel="noopener noreferrer">
+                     <Button variant="outline" size="sm" asChild>
+                      <Link href={`/reports/${project.links.report}`}>
                         <ExternalLink className="mr-2 h-4 w-4" /> Report
-                      </a>
+                      </Link>
                     </Button>
                   )}
                 </div>
@@ -88,6 +72,15 @@ export function Projects() {
             </Card>
           ))}
         </div>
+        {showViewAll && (
+          <div className="text-center mt-12">
+            <Button asChild size="lg">
+              <Link href="/projects">
+                View All Projects <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

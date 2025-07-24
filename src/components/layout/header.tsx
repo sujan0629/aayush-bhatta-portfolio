@@ -6,16 +6,17 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import Link from 'next/link';
 
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#timeline', label: 'Timeline' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#research', label: 'Research' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#blog', label: 'Blog' },
-  { href: '#qa', label: 'Q&A' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#about', label: 'About' },
+  { href: '/#timeline', label: 'Timeline' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/reports', label: 'Reports' },
+  { href: '/#gallery', label: 'Gallery' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#qa', label: 'Q&A' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export function Header() {
@@ -39,19 +40,19 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <a href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
+        <Link href="/" className="flex items-center gap-2 font-headline text-xl font-bold">
           <Mountain className="h-6 w-6 text-primary" />
           <span>Aayush Bhatta</span>
-        </a>
+        </Link>
         <nav className="hidden items-center gap-4 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="flex items-center gap-2">
@@ -65,20 +66,20 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="flex flex-col gap-4 p-4">
-              <a href="#" className="flex items-center gap-2 font-headline text-xl font-bold" onClick={() => setOpen(false)}>
+              <Link href="/" className="flex items-center gap-2 font-headline text-xl font-bold" onClick={() => setOpen(false)}>
                   <Mountain className="h-6 w-6 text-primary" />
                   <span>Aayush Bhatta</span>
-                </a>
+                </Link>
                 <nav className="flex flex-col gap-4">
                   {navLinks.map((link) => (
-                    <a
+                    <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setOpen(false)}
                       className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
               </div>
