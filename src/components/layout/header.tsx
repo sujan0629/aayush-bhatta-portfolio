@@ -9,13 +9,16 @@ import { Menu } from 'lucide-react';
 import Link from 'next/link';
 
 const navLinks = [
-  { href: '/#about', label: 'About' },
-  { href: '/#timeline', label: 'Timeline' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/reports', label: 'Reports' },
-  { href: '/#gallery', label: 'Gallery' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/#qa', label: 'Q&A' },
+  { href: '/', label: 'Home' },
+  { href: '/journal-articles', label: 'Journal Articles' },
+  { href: '/other-publications', label: 'Other Publications' },
+  { href: '/honors-and-awards', label: 'Honors & Awards' },
+  { href: '/research-activities', label: 'Research Activities' },
+  { href: '/columns', label: 'Columns' },
+  { href: '/at-a-glance', label: 'At a Glance' },
+  { href: '/camera-roll', label: 'Camera Roll' },
+  { href: '/literature-corner', label: 'Literature Corner' },
+  { href: '/media-coverage', label: 'Media Coverage' },
   { href: '/#contact', label: 'Contact' },
 ];
 
