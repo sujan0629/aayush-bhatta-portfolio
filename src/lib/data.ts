@@ -1,3 +1,5 @@
+import { imageUrls } from './images';
+
 export interface Project {
   slug: string;
   title: string;
@@ -20,7 +22,7 @@ export const projects: Project[] = [
     category: 'Academic Project',
     description: 'A comprehensive study on the seismic behavior of RC frame structures using non-linear time-history analysis in SAP2000.',
     longDescription: 'This academic project involved an in-depth investigation into the seismic performance of multi-story reinforced concrete buildings. The core of the project was to model various structural configurations in SAP2000 and subject them to a suite of earthquake ground motion records. We performed non-linear time-history analysis to accurately capture material non-linearity and geometric effects. The results were used to evaluate key performance indicators like inter-story drift, plastic hinge formation, and overall structural stability, providing recommendations for improving seismic-resistant design practices.',
-    image: 'https://placehold.co/600x400',
+    image: imageUrls.projectDefault,
     hint: 'building blueprint',
     tags: ['Structural Engineering', 'Seismic Analysis', 'SAP2000', 'Finite Element Analysis'],
     links: { github: '#', report: 'seismic-analysis-report' },
@@ -31,7 +33,7 @@ export const projects: Project[] = [
     category: 'Professional Project',
     description: 'Designed a SUDS for a new residential development, incorporating permeable pavements and green roofs to manage stormwater runoff effectively.',
     longDescription: 'As part of a professional team, I was responsible for designing a Sustainable Urban Drainage System (SUDS) for a new 5-hectare residential development. The design aimed to mimic natural drainage patterns and minimize the impact on the local water table. Key features included the strategic placement of permeable pavements in parking areas, the design of vegetated swales along roadways, and the integration of green roofs on apartment blocks. The system was modeled to manage a 1-in-100-year storm event, significantly reducing peak runoff rates and improving water quality.',
-    image: 'https://placehold.co/600x400',
+    image: imageUrls.projectDefault,
     hint: 'green roof',
     tags: ['Sustainability', 'Water Resources', 'AutoCAD', 'Stormwater Management'],
     links: { report: 'suds-design-report' },
@@ -42,7 +44,7 @@ export const projects: Project[] = [
     category: 'Academic Project',
     description: 'Led a team to conduct soil testing, analysis, and foundation design recommendations for a proposed 20-story building.',
     longDescription: 'This team-based academic project focused on a complete geotechnical investigation for a proposed 20-story commercial building. My role as team lead involved planning the site investigation, which included borehole drilling and standard penetration tests (SPT). We collected soil samples for laboratory testing to determine properties like shear strength, compressibility, and permeability. Using the data, we analyzed bearing capacity and settlement, ultimately recommending a piled raft foundation system to ensure the building\'s long-term stability.',
-    image: 'https://placehold.co/600x400',
+    image: imageUrls.projectDefault,
     hint: 'soil core sample',
     tags: ['Geotechnical', 'Foundation Design', 'Team Project', 'Site Investigation'],
     links: {},
@@ -130,7 +132,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'future-of-sustainable-construction',
     title: 'The Future of Sustainable Construction Materials',
     description: 'Exploring innovations in eco-friendly materials that are revolutionizing the construction industry.',
-    image: 'https://placehold.co/600x400',
+    image: imageUrls.blogDefault,
     hint: 'sustainable building',
     date: 'October 26, 2023',
     tags: ['Sustainability', 'Innovation'],
@@ -140,7 +142,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'ai-in-structural-health-monitoring',
     title: 'AI in Structural Health Monitoring',
     description: 'How artificial intelligence is being used to predict and prevent structural failures in real-time.',
-    image: 'https://placehold.co/600x400',
+    image: imageUrls.blogDefault,
     hint: 'modern bridge',
     date: 'September 15, 2023',
     tags: ['AI', 'Civil-Tech'],
@@ -150,7 +152,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'deep-dive-geotechnical-investigation',
     title: 'A Deep Dive into Geotechnical Site Investigation',
     description: 'Best practices and modern techniques for understanding subsurface conditions before you build.',
-    image: 'https://placehold.co/600x400',
+    image: imageUrls.blogDefault,
     hint: 'soil testing',
     date: 'August 02, 2023',
     tags: ['Geotechnical', 'Engineering'],
@@ -228,9 +230,9 @@ export const columns: Column[] = [
 ];
 
 export const galleryImages: GalleryImage[] = [
-  { id: 1, src: 'https://placehold.co/800x600', alt: 'Project site visit', hint: 'construction site', caption: 'On-site structural inspection' },
-  { id: 2, src: 'https://placehold.co/800x600', alt: 'Workshop on sustainable materials', hint: 'engineering workshop', caption: 'Sustainable Materials Workshop' },
-  { id: 3, src: 'https://placehold.co/800x600', alt: 'Bridge design model', hint: 'bridge model', caption: '3D model of bridge design project' },
+  { id: 1, src: imageUrls.galleryDefault, alt: 'Project site visit', hint: 'construction site', caption: 'On-site structural inspection' },
+  { id: 2, src: imageUrls.galleryDefault, alt: 'Workshop on sustainable materials', hint: 'engineering workshop', caption: 'Sustainable Materials Workshop' },
+  { id: 3, src: imageUrls.galleryDefault, alt: 'Bridge design model', hint: 'bridge model', caption: '3D model of bridge design project' },
 ];
 
 export const literatures: Literature[] = [
@@ -239,7 +241,7 @@ export const literatures: Literature[] = [
         title: "Structures or Why Things Don't Fall Down",
         author: "J.E. Gordon",
         description: "A classic book that explains the basic principles of structural engineering in an accessible and engaging way. Highly recommended for aspiring engineers.",
-        image: "https://placehold.co/600x400",
+        image: imageUrls.literatureDefault,
         hint: "classic library"
     }
 ];

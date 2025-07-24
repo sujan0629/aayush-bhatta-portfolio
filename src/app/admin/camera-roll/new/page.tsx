@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { useRouter } from 'next/navigation';
+import { imageUrls } from '@/lib/images';
 
 const imageSchema = z.object({
   src: z.string().url('Must be a valid URL'),
@@ -36,7 +37,7 @@ export default function NewImagePage() {
   const form = useForm<ImageFormValues>({
     resolver: zodResolver(imageSchema),
     defaultValues: {
-      src: 'https://placehold.co/800x600',
+      src: imageUrls.galleryDefault,
       alt: '',
       hint: '',
       caption: '',

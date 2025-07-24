@@ -2,13 +2,14 @@ import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import { Download, Send } from 'lucide-react';
 import Image from 'next/image';
+import { imageUrls } from '@/lib/images';
 
 export function Hero() {
   return (
     <section id="home" className="relative h-[80vh] min-h-[600px] flex items-center justify-center text-center">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://placehold.co/1920x1080"
+          src={imageUrls.heroBackground}
           alt="Modern architecture background"
           layout="fill"
           objectFit="cover"

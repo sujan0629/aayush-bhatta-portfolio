@@ -11,6 +11,7 @@ import { blogPosts } from '@/lib/data';
 import { Research } from '@/components/sections/research';
 import { Certifications } from '@/components/sections/certifications';
 import { QA } from '@/components/sections/qa';
+import { imageUrls } from '@/lib/images';
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
         <div className="relative bg-background py-16">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            style={{ backgroundImage: `url('${imageUrls.aboutBackground}')` }}
             data-ai-hint="blueprint sketch"
           ></div>
           <div className="relative z-10">
@@ -31,7 +32,7 @@ export default function Home() {
         <div className="relative bg-secondary py-16">
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            style={{ backgroundImage: `url('${imageUrls.timelineBackground}')` }}
             data-ai-hint="winding road"
           ></div>
           <div className="relative z-10">
@@ -41,7 +42,7 @@ export default function Home() {
         <div className="relative bg-background py-16">
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            style={{ backgroundImage: `url('${imageUrls.projectsBackground}')` }}
             data-ai-hint="urban scene"
           ></div>
           <div className="relative z-10">
@@ -51,7 +52,7 @@ export default function Home() {
         <div className="relative bg-secondary py-16">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            style={{ backgroundImage: `url('${imageUrls.researchBackground}')` }}
             data-ai-hint="flying book"
           ></div>
           <div className="relative z-10">
@@ -61,7 +62,7 @@ export default function Home() {
         <div className="relative bg-background py-16">
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            style={{ backgroundImage: `url('${imageUrls.blogBackground}')` }}
             data-ai-hint="construction fields"
           ></div>
           <div className="relative z-10">
@@ -71,7 +72,7 @@ export default function Home() {
         <div className="relative bg-secondary py-16">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            style={{ backgroundImage: `url('${imageUrls.certificationsBackground}')` }}
             data-ai-hint="certificate award"
           ></div>
           <div className="relative z-10">
@@ -81,7 +82,7 @@ export default function Home() {
         <div className="relative bg-background py-16">
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            style={{ backgroundImage: `url('${imageUrls.qaBackground}')` }}
             data-ai-hint="question mark"
           ></div>
           <div className="relative z-10">
@@ -91,7 +92,7 @@ export default function Home() {
         <div className="relative bg-secondary py-16">
            <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            style={{ backgroundImage: `url('${imageUrls.contactBackground}')` }}
             data-ai-hint="modern office"
           ></div>
           <div className="relative z-10">

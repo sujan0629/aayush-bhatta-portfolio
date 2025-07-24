@@ -13,6 +13,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { useRouter } from 'next/navigation';
+import { imageUrls } from '@/lib/images';
 
 const literatureSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -41,7 +42,7 @@ export default function NewLiteraturePage() {
       title: '',
       author: '',
       description: '',
-      image: 'https://placehold.co/600x400',
+      image: imageUrls.literatureDefault,
       hint: '',
     },
   });

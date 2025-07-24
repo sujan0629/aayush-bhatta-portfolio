@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
+import { imageUrls } from '@/lib/images';
 
 export function ResearchActivities() {
   return (
@@ -13,7 +14,7 @@ export function ResearchActivities() {
         <CardContent className="p-6 grid md:grid-cols-2 gap-8 items-center">
             <div className="relative aspect-video rounded-lg overflow-hidden">
                 <Image
-                    src="https://placehold.co/600x400"
+                    src={imageUrls.researchActivities}
                     alt="Research placeholder"
                     layout="fill"
                     objectFit="cover"
