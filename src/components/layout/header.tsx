@@ -22,14 +22,14 @@ const primaryLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
   { href: '/blog', label: 'Blog' },
+  { href: '/journal-articles', label: 'Journal Articles' },
+  { href: '/honors-and-awards', label: 'Honors & Awards' },
+  { href: '/research-activities', label: 'Research' },
   { href: '/#contact', label: 'Contact' },
 ];
 
 const secondaryLinks = [
-  { href: '/journal-articles', label: 'Journal Articles' },
   { href: '/other-publications', label: 'Other Publications' },
-  { href: '/honors-and-awards', label: 'Honors & Awards' },
-  { href: '/research-activities', label: 'Research Activities' },
   { href: '/columns', label: 'Columns' },
   { href: '/at-a-glance', label: 'At a Glance' },
   { href: '/camera-roll', label: 'Camera Roll' },
@@ -37,7 +37,7 @@ const secondaryLinks = [
   { href: '/media-coverage', label: 'Media Coverage' },
 ];
 
-const allLinks = [...primaryLinks.slice(0,3), ...secondaryLinks, primaryLinks[3]];
+const allLinks = [...primaryLinks.slice(0,6), ...secondaryLinks, primaryLinks[6]];
 
 
 export function Header() {
@@ -65,7 +65,7 @@ export function Header() {
           <Mountain className="h-6 w-6 text-primary" />
           <span>Aayush Bhatta</span>
         </Link>
-        <nav className="hidden items-center gap-2 md:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           {primaryLinks.map((link) => (
             <Button variant="link" asChild key={link.href}>
                 <Link
@@ -78,7 +78,7 @@ export function Header() {
           ))}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="link">
+              <Button variant="link" className="text-sm font-semibold text-muted-foreground transition-colors hover:text-primary px-3">
                 More
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
