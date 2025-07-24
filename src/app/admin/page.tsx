@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FileText, Newspaper } from 'lucide-react';
+import { FileText, Newspaper, BookOpen, Camera, PenSquare, Tv } from 'lucide-react';
 
 export default function AdminDashboardPage() {
   const router = useRouter();
@@ -33,7 +33,7 @@ export default function AdminDashboardPage() {
             <h1 className="text-4xl font-bold tracking-tight">Admin Dashboard</h1>
             <Button onClick={handleLogout} variant="outline">Logout</Button>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2"><FileText /> Manage Projects</CardTitle>
@@ -53,6 +53,53 @@ export default function AdminDashboardPage() {
               <CardContent>
                 <Button asChild>
                   <Link href="/admin/blog">Go to Blog Management</Link>
+                </Button>
+              </CardContent>
+            </Card>
+             <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><BookOpen /> Manage Publications</CardTitle>
+                <CardDescription>Manage Other Publications and Columns.</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-2">
+                 <Button asChild>
+                  <Link href="/admin/other-publications">Other Publications</Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/admin/columns">Columns</Link>
+                </Button>
+              </CardContent>
+            </Card>
+             <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><Camera /> Manage Camera Roll</CardTitle>
+                <CardDescription>Add or remove images from the gallery.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild>
+                  <Link href="/admin/camera-roll">Go to Gallery Management</Link>
+                </Button>
+              </CardContent>
+            </Card>
+             <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><PenSquare /> Manage Literature</CardTitle>
+                <CardDescription>Update the literature corner section.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild>
+                  <Link href="/admin/literature-corner">Go to Literature Management</Link>
+                </Button>
+              </CardContent>
+            </Card>
+             <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><Tv /> Manage Media Coverage</CardTitle>
+                <CardDescription>Add or remove media mentions.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild>
+                  <Link href="/admin/media-coverage">Go to Media Management</Link>
                 </Button>
               </CardContent>
             </Card>

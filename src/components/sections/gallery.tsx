@@ -8,16 +8,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { GalleryImage } from '@/lib/data';
 
-const galleryItems = [
-  { src: 'https://placehold.co/800x600', alt: 'Project site visit', hint: 'construction site', caption: 'On-site structural inspection' },
-  { src: 'https://placehold.co/800x600', alt: 'Workshop on sustainable materials', hint: 'engineering workshop', caption: 'Sustainable Materials Workshop' },
-  { src: 'https://placehold.co/800x600', alt: 'Bridge design model', hint: 'bridge model', caption: '3D model of bridge design project' },
-  { src: 'https://placehold.co/800x600', alt: 'Certificate of achievement', hint: 'certificate award', caption: 'Receiving design competition award' },
-  { src: 'https://placehold.co/800x600', alt: 'Team collaboration on a project', hint: 'engineering team', caption: 'Collaborative project planning session' },
-];
+interface GalleryProps {
+  items: GalleryImage[];
+}
 
-export function Gallery() {
+export function Gallery({ items }: GalleryProps) {
   return (
     <section id="gallery" className="py-16 bg-background">
       <div className="container mx-auto px-4">
@@ -27,7 +24,7 @@ export function Gallery() {
         </div>
         <Carousel className="w-full" opts={{ loop: true, align: 'start' }}>
           <CarouselContent>
-            {galleryItems.map((item, index) => (
+            {items.map((item, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
                   <Card className="overflow-hidden">

@@ -157,3 +157,100 @@ export const blogPosts: BlogPost[] = [
     content: 'What lies beneath the ground is just as important as the structure that stands upon it. A thorough geotechnical site investigation is the foundation of any successful construction project. This article covers the essential steps, from initial desk studies and walkover surveys to advanced in-situ testing methods like Cone Penetration Testing (CPT) and geophysical surveys. Understanding the soil mechanics and groundwater conditions is crucial for designing safe, stable, and economical foundations.'
   },
 ];
+
+// New data structures
+export interface OtherPublication {
+  id: number;
+  title: string;
+  publication: string;
+  date: string;
+  link: string;
+  description: string;
+}
+
+export interface Column {
+  id: number;
+  title: string;
+  outlet: string;
+  date: string;
+  link: string;
+  summary: string;
+}
+
+export interface GalleryImage {
+  id: number;
+  src: string;
+  alt: string;
+  hint: string;
+  caption: string;
+}
+
+export interface Literature {
+  id: number;
+  title: string;
+  author: string;
+  description: string;
+  image: string;
+  hint: string;
+}
+
+export interface MediaCoverage {
+  id: number;
+  title: string;
+  outlet: string;
+  date: string;
+  link: string;
+  summary: string;
+}
+
+
+// Mock data for new sections
+export const otherPublications: OtherPublication[] = [
+    {
+        id: 1,
+        title: "Conference Paper on Low-Cost Housing Materials",
+        publication: "International Conference on Civil Engineering 2023",
+        date: "2023-11-20",
+        link: "#",
+        description: "Presented a paper on the use of locally sourced, cost-effective materials for residential housing projects in developing regions."
+    }
+];
+
+export const columns: Column[] = [
+    {
+        id: 1,
+        title: "The Role of Engineers in Urban Planning",
+        outlet: "The Engineering Post",
+        date: "2023-09-05",
+        link: "#",
+        summary: "An opinion piece on why civil engineers must be more involved in the early stages of urban planning to create more livable and sustainable cities."
+    }
+];
+
+export const galleryImages: GalleryImage[] = [
+  { id: 1, src: 'https://placehold.co/800x600', alt: 'Project site visit', hint: 'construction site', caption: 'On-site structural inspection' },
+  { id: 2, src: 'https://placehold.co/800x600', alt: 'Workshop on sustainable materials', hint: 'engineering workshop', caption: 'Sustainable Materials Workshop' },
+  { id: 3, src: 'https://placehold.co/800x600', alt: 'Bridge design model', hint: 'bridge model', caption: '3D model of bridge design project' },
+];
+
+export const literatures: Literature[] = [
+    {
+        id: 1,
+        title: "Structures or Why Things Don't Fall Down",
+        author: "J.E. Gordon",
+        description: "A classic book that explains the basic principles of structural engineering in an accessible and engaging way. Highly recommended for aspiring engineers.",
+        image: "https://placehold.co/600x400",
+        hint: "classic library"
+    }
+];
+
+export const mediaCoverages: MediaCoverage[] = [
+    {
+        id: 1,
+        title: "Local Engineer Wins Bridge Design Competition",
+        outlet: "City Times Newspaper",
+        date: "2022-05-10",
+        link: "#",
+        summary: "A feature on the innovative bridge design that won first place at the National Society of Civil Engineers competition."
+    }
+];
