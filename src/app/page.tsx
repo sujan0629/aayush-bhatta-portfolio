@@ -18,29 +18,85 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <div className="bg-background">
-          <About />
+        <div className="relative bg-background py-16">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            data-ai-hint="blueprint sketch"
+          ></div>
+          <div className="relative z-10">
+            <About />
+          </div>
         </div>
-        <div className="bg-secondary">
-          <Timeline />
+        <div className="relative bg-secondary py-16">
+           <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            data-ai-hint="winding road"
+          ></div>
+          <div className="relative z-10">
+            <Timeline />
+          </div>
         </div>
-        <div className="bg-background">
-          <Projects projects={projects.slice(0, 3)} showViewAll />
+        <div className="relative bg-background py-16">
+           <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            data-ai-hint="modern city architecture"
+          ></div>
+          <div className="relative z-10">
+            <Projects projects={projects.slice(0, 3)} showViewAll />
+          </div>
         </div>
-        <div className="bg-secondary">
-          <Research />
+        <div className="relative bg-secondary py-16">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            data-ai-hint="scientific journal"
+          ></div>
+          <div className="relative z-10">
+            <Research />
+          </div>
         </div>
-        <div className="bg-background">
-          <Blog posts={blogPosts.slice(0, 3)} showViewAll />
+        <div className="relative bg-background py-16">
+           <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            data-ai-hint="person writing"
+          ></div>
+          <div className="relative z-10">
+            <Blog posts={blogPosts.slice(0, 3)} showViewAll />
+          </div>
         </div>
-        <div className="bg-secondary">
-          <Certifications />
+        <div className="relative bg-secondary py-16">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            data-ai-hint="certificate award"
+          ></div>
+          <div className="relative z-10">
+            <Certifications />
+          </div>
         </div>
-        <div className="bg-background">
-          <QA />
+        <div className="relative bg-background py-16">
+           <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            data-ai-hint="question mark"
+          ></div>
+          <div className="relative z-10">
+            <QA />
+          </div>
         </div>
-        <div className="bg-secondary">
-          <Contact />
+        <div className="relative bg-secondary py-16">
+           <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: "url('https://placehold.co/1920x1080')" }}
+            data-ai-hint="modern office"
+          ></div>
+          <div className="relative z-10">
+            <Contact />
+          </div>
         </div>
       </main>
       <Footer />

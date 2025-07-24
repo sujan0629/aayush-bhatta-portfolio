@@ -50,7 +50,7 @@ export function QA() {
   }
 
   return (
-    <section id="qa" className="py-16 bg-background">
+    <section id="qa" className="">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold tracking-tight inline-flex items-center gap-2">

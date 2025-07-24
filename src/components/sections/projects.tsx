@@ -14,7 +14,7 @@ interface ProjectsProps {
 
 export function Projects({ projects, showViewAll = false }: ProjectsProps) {
   return (
-    <section id="projects" className="py-16 bg-background">
+    <section id="projects" className="">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold tracking-tight">Projects</h2>

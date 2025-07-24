@@ -35,7 +35,7 @@ const timelineEvents = [
 
 export function Timeline() {
   return (
-    <section id="timeline" className="py-16 bg-secondary">
+    <section id="timeline" className="">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold tracking-tight">My Journey</h2>
