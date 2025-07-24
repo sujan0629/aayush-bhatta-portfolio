@@ -5,6 +5,7 @@ import {
   ChevronDown,
   Menu,
   Mountain,
+  UserCog,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -12,11 +13,13 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from '@/components/theme-toggle';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const primaryLinks = [
   { href: '/', label: 'Home' },
@@ -42,6 +45,15 @@ const allLinks = [...primaryLinks.slice(0,6), ...secondaryLinks, primaryLinks[6]
 
 export function Header() {
   const [open, setOpen] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const pathname = usePathname();
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('auth_token');
+      setIsLoggedIn(!!token);
+    }
+  }, [pathname]);
 
   return (
     <header
@@ -76,6 +88,17 @@ export function Header() {
                   <Link href={link.href}>{link.label}</Link>
                 </DropdownMenuItem>
               ))}
+              {isLoggedIn && (
+                 <>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/admin">
+                      <UserCog className="mr-2 h-4 w-4" />
+                      Admin Panel
+                    </Link>
+                  </DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
         </nav>
@@ -109,6 +132,15 @@ export function Header() {
                       {link.label}
                     </Link>
                   ))}
+                  {isLoggedIn && (
+                    <Link
+                      href="/admin"
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      Admin Panel
+                    </Link>
+                  )}
                 </nav>
               </div>
             </SheetContent>

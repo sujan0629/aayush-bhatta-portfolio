@@ -13,6 +13,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Trash } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const projectSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -33,6 +34,15 @@ type ProjectFormValues = z.infer<typeof projectSchema>;
 
 export default function ProjectAdminPage() {
   const { toast } = useToast();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('auth_token');
+    if (!token) {
+      router.replace('/login');
+    }
+  }, [router]);
+
   const form = useForm<ProjectFormValues>({
     resolver: zodResolver(projectSchema),
     defaultValues: {
