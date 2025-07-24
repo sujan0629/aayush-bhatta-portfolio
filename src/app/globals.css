@@ -76,4 +76,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  .bg-secondary {
+    background-image: radial-gradient(hsl(var(--muted-foreground)) 0.5px, transparent 0.5px);
+    background-size: 10px 10px;
+    background-position: -5px -5px;
+  }
 }
