@@ -16,7 +16,7 @@ export function Blog({ posts = blogPosts, showViewAll = false }: BlogProps) {
   const displayPosts = showViewAll ? posts.slice(0, 3) : posts;
 
   return (
-    <section id="blog" className="py-16 bg-secondary">
+    <section id="blog" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold tracking-tight">Blog &amp; Insights</h2>

@@ -11,7 +11,7 @@ export function generateStaticParams() {
   }));
 }
 
-export default function ReportDetailsPage({ params }: { params: { slug: string } }) {
+export default function ReportDetailsPage({ params }: { params: { slug:string } }) {
   const report = reports.find((p) => p.slug === params.slug);
 
   if (!report) {
@@ -19,7 +19,7 @@ export default function ReportDetailsPage({ params }: { params: { slug: string }
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-secondary">
+    <div className="flex min-h-screen flex-col bg-background">
       <Header />
       <main className="flex-1 py-16">
         <div className="container mx-auto px-4">
