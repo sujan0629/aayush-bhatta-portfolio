@@ -1,19 +1,34 @@
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { blogPosts } from '@/lib/data';
+import { blogPosts, BlogPost } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }));
+async function getPost(slug: string): Promise<BlogPost | null> {
+  const res = await fetch(`${process.env.API_BASE_URL}/api/blog/${slug}`, { cache: 'no-store' });
+  if (!res.ok) {
+    return null;
+  }
+  return res.json();
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export async function generateStaticParams() {
+    const res = await fetch(`${process.env.API_BASE_URL}/api/blog`, { cache: 'no-store' });
+    if (!res.ok) {
+        return [];
+    }
+    const posts: BlogPost[] = await res.json();
+
+    return posts.map((post) => ({
+        slug: post.slug,
+    }));
+}
+
+
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = await getPost(params.slug);
 
   if (!post) {
     notFound();
@@ -31,8 +46,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   <Image
                     src={post.image}
                     alt={post.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    className="object-cover"
                     data-ai-hint={post.hint}
                   />
                 </div>
