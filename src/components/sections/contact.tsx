@@ -10,7 +10,7 @@ export function Contact() {
     <section id="contact" className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold">Get In Touch</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Get In Touch</h2>
           <p className="text-lg text-muted-foreground mt-2">I'm open to discussing new projects and opportunities.</p>
         </div>
         <div className="grid md:grid-cols-5 gap-8">
@@ -19,7 +19,7 @@ export function Contact() {
               <CardHeader className="flex flex-row items-center gap-4 space-y-0">
                 <Mail className="w-8 h-8 text-primary" />
                 <div>
-                  <CardTitle className="font-headline text-lg">Email</CardTitle>
+                  <CardTitle className="text-lg font-semibold">Email</CardTitle>
                   <CardDescription>
                     <a href="mailto:aayush.bhatta.dev@email.com" className="hover:underline">
                       aayush.bhatta.dev@email.com
@@ -32,7 +32,7 @@ export function Contact() {
               <CardHeader className="flex flex-row items-center gap-4 space-y-0">
                 <Linkedin className="w-8 h-8 text-primary" />
                 <div>
-                  <CardTitle className="font-headline text-lg">LinkedIn</CardTitle>
+                  <CardTitle className="text-lg font-semibold">LinkedIn</CardTitle>
                   <CardDescription>
                     <a href="#" target="_blank" rel="noopener noreferrer" className="hover:underline">
                       linkedin.com/in/aayush-bhatta
@@ -45,7 +45,7 @@ export function Contact() {
               <CardHeader className="flex flex-row items-center gap-4 space-y-0">
                 <Github className="w-8 h-8 text-primary" />
                 <div>
-                  <CardTitle className="font-headline text-lg">GitHub</CardTitle>
+                  <CardTitle className="text-lg font-semibold">GitHub</CardTitle>
                   <CardDescription>
                     <a href="#" target="_blank" rel="noopener noreferrer" className="hover:underline">
                       github.com/aayush-bhatta
@@ -58,7 +58,7 @@ export function Contact() {
           <div className="md:col-span-3">
             <Card>
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">Send me a message</CardTitle>
+                <CardTitle className="text-2xl font-semibold">Send me a message</CardTitle>
                 <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
               </CardHeader>
               <CardContent>

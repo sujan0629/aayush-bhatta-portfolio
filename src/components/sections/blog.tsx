@@ -19,7 +19,7 @@ export function Blog({ posts = blogPosts, showViewAll = false }: BlogProps) {
     <section id="blog" className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold">Blog &amp; Insights</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Blog &amp; Insights</h2>
           <p className="text-lg text-muted-foreground mt-2">My thoughts on engineering, sustainability, and technology.</p>
         </div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -41,7 +41,7 @@ export function Blog({ posts = blogPosts, showViewAll = false }: BlogProps) {
                 <div className="mb-2">
                   {post.tags.map(tag => <Badge key={tag} variant="secondary" className="mr-2">{tag}</Badge>)}
                 </div>
-                <CardTitle className="font-headline text-xl mb-2">
+                <CardTitle className="text-xl font-semibold mb-2">
                   <Link href={`/blog/${post.slug}`} className="hover:underline">
                     {post.title}
                   </Link>

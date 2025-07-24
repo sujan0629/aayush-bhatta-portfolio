@@ -39,7 +39,7 @@ export default function ProjectDetailsPage({ params }: { params: { slug: string 
                 />
               </div>
               <Badge variant="default" className="w-fit mb-2">{project.category}</Badge>
-              <CardTitle className="font-headline text-4xl">{project.title}</CardTitle>
+              <CardTitle className="text-4xl font-bold tracking-tight">{project.title}</CardTitle>
               <div className="flex flex-wrap gap-2 pt-2">
                 {project.tags.map((tag) => (
                   <Badge key={tag} variant="secondary">{tag}</Badge>

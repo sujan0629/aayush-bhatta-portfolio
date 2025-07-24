@@ -37,7 +37,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   />
                 </div>
                 <div className="mb-4 text-center">
-                    <CardTitle className="font-headline text-4xl">{post.title}</CardTitle>
+                    <CardTitle className="text-4xl font-bold tracking-tight">{post.title}</CardTitle>
                     <p className="text-sm text-muted-foreground mt-2">{post.date}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">

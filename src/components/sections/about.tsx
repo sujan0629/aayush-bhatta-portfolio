@@ -16,13 +16,13 @@ export function About() {
   return (
     <section id="about" className="container mx-auto py-16 px-4 bg-background">
       <div className="text-center mb-12">
-        <h2 className="font-headline text-4xl font-bold">About Me</h2>
+        <h2 className="text-4xl font-bold tracking-tight">About Me</h2>
         <p className="text-lg text-muted-foreground mt-2">My background, education, and technical skills.</p>
       </div>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         <Card className="lg:col-span-3">
           <CardHeader>
-            <CardTitle className="font-headline text-2xl">Biography</CardTitle>
+            <CardTitle className="text-2xl font-semibold">Biography</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed">
@@ -32,7 +32,7 @@ export function About() {
         </Card>
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle className="font-headline text-2xl">Education</CardTitle>
+            <CardTitle className="text-2xl font-semibold">Education</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-start gap-4">
@@ -55,7 +55,7 @@ export function About() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline text-2xl">Skills</CardTitle>
+            <CardTitle className="text-2xl font-semibold">Skills</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">

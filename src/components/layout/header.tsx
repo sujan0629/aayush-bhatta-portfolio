@@ -40,7 +40,7 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2 font-headline text-xl font-bold">
+        <Link href="/" className="flex items-center gap-2 text-xl font-bold">
           <Mountain className="h-6 w-6 text-primary" />
           <span>Aayush Bhatta</span>
         </Link>
@@ -66,7 +66,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="flex flex-col gap-4 p-4">
-              <Link href="/" className="flex items-center gap-2 font-headline text-xl font-bold" onClick={() => setOpen(false)}>
+              <Link href="/" className="flex items-center gap-2 text-xl font-bold" onClick={() => setOpen(false)}>
                   <Mountain className="h-6 w-6 text-primary" />
                   <span>Aayush Bhatta</span>
                 </Link>

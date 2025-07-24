@@ -25,7 +25,7 @@ export function Research() {
     <section id="research" className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold">Research &amp; Publications</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Research &amp; Publications</h2>
           <p className="text-lg text-muted-foreground mt-2">My contributions to the field of civil engineering.</p>
         </div>
         <Card>
@@ -35,7 +35,7 @@ export function Research() {
                 <AccordionItem value={`item-${index}`} key={index}>
                   <AccordionTrigger>
                     <div className="text-left">
-                      <h3 className="font-headline text-lg">{pub.title}</h3>
+                      <h3 className="text-lg font-semibold">{pub.title}</h3>
                       <div className="flex items-center gap-2 mt-1">
                          <Badge variant={pub.status === 'Published' ? 'default' : 'secondary'}>{pub.status}</Badge>
                          <p className="text-sm text-muted-foreground">{pub.authors}</p>

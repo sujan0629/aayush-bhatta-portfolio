@@ -22,7 +22,7 @@ export function Gallery() {
     <section id="gallery" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold">Gallery</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Gallery</h2>
           <p className="text-lg text-muted-foreground mt-2">A visual journey through my projects, workshops, and achievements.</p>
         </div>
         <Carousel className="w-full" opts={{ loop: true, align: 'start' }}>

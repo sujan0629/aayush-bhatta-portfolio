@@ -28,7 +28,7 @@ export function Certifications() {
     <section id="certifications" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold">Certifications &amp; Licensure</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Certifications &amp; Licensure</h2>
           <p className="text-lg text-muted-foreground mt-2">My professional credentials and qualifications.</p>
         </div>
         <Card>
@@ -42,7 +42,7 @@ export function Certifications() {
                     </div>
                   </div>
                   <div className="flex-grow">
-                    <h3 className="font-headline text-xl font-semibold">{cert.title}</h3>
+                    <h3 className="text-xl font-semibold">{cert.title}</h3>
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 my-1">
                       <p className="font-medium text-primary">{cert.category}</p>
                       <p className="text-sm text-muted-foreground">{cert.id}</p>

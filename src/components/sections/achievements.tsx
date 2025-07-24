@@ -28,7 +28,7 @@ export function Achievements() {
     <section id="achievements" className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold">Achievements &amp; Awards</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Achievements &amp; Awards</h2>
           <p className="text-lg text-muted-foreground mt-2">Recognition of my dedication and hard work.</p>
         </div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -36,7 +36,7 @@ export function Achievements() {
             <Card key={index}>
               <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
                 {item.icon}
-                <CardTitle className="font-headline text-xl">{item.title}</CardTitle>
+                <CardTitle className="text-xl font-semibold">{item.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">{item.issuer}</p>

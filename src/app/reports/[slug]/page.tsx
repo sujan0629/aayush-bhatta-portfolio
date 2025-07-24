@@ -26,7 +26,7 @@ export default function ReportDetailsPage({ params }: { params: { slug: string }
           <article className="max-w-4xl mx-auto">
             <Card>
               <CardHeader className="text-center">
-                <CardTitle className="font-headline text-4xl">{report.title}</CardTitle>
+                <CardTitle className="text-4xl font-bold tracking-tight">{report.title}</CardTitle>
                 <CardDescription className="pt-2">
                   Project: {report.project} | Date: {report.date}
                 </CardDescription>
@@ -37,7 +37,7 @@ export default function ReportDetailsPage({ params }: { params: { slug: string }
                   <Separator className="my-8" />
                   {report.sections.map((section) => (
                     <div key={section.title}>
-                      <h2 className="font-headline">{section.title}</h2>
+                      <h2 className="font-semibold">{section.title}</h2>
                       <p className="text-muted-foreground">{section.content}</p>
                     </div>
                   ))}

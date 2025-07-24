@@ -38,7 +38,7 @@ export function Timeline() {
     <section id="timeline" className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-4xl font-bold">My Journey</h2>
+          <h2 className="text-4xl font-bold tracking-tight">My Journey</h2>
           <p className="text-lg text-muted-foreground mt-2">A timeline of my key milestones and experiences.</p>
         </div>
         <div className="relative">
@@ -58,7 +58,7 @@ export function Timeline() {
                   <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle className="font-headline text-xl">{event.title}</CardTitle>
+                        <CardTitle className="text-xl font-semibold">{event.title}</CardTitle>
                         <p className="text-sm font-medium text-primary">{event.date}</p>
                       </div>
                     </CardHeader>

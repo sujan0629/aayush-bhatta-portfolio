@@ -17,7 +17,7 @@ export function Projects({ projects, showViewAll = false }: ProjectsProps) {
     <section id="projects" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold">Projects</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Projects</h2>
           <p className="text-lg text-muted-foreground mt-2">A selection of my academic and professional work.</p>
         </div>
         <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
@@ -37,7 +37,7 @@ export function Projects({ projects, showViewAll = false }: ProjectsProps) {
                   </Link>
                 </div>
                 <Badge variant="default" className="w-fit">{project.category}</Badge>
-                <CardTitle className="font-headline pt-2">
+                <CardTitle className="pt-2 font-semibold">
                   <Link href={`/projects/${project.slug}`} className="hover:underline">
                     {project.title}
                   </Link>

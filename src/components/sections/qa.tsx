@@ -53,7 +53,7 @@ export function QA() {
     <section id="qa" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold inline-flex items-center gap-2">
+          <h2 className="text-4xl font-bold tracking-tight inline-flex items-center gap-2">
             <Sparkles className="h-8 w-8 text-primary" />
             AI-Powered Q&amp;A
           </h2>

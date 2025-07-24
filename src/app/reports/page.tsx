@@ -13,14 +13,14 @@ export default function AllReportsPage() {
       <main className="flex-1 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="font-headline text-5xl font-bold">All Reports</h1>
+            <h1 className="text-5xl font-bold tracking-tight">All Reports</h1>
             <p className="text-lg text-muted-foreground mt-2">Detailed findings from my projects.</p>
           </div>
           <div className="max-w-4xl mx-auto space-y-8">
             {reports.map((report) => (
               <Card key={report.slug}>
                 <CardHeader>
-                  <CardTitle className="font-headline text-2xl">{report.title}</CardTitle>
+                  <CardTitle className="text-2xl font-semibold">{report.title}</CardTitle>
                   <CardDescription>
                     For project: "{report.project}" | Published: {report.date}
                   </CardDescription>
