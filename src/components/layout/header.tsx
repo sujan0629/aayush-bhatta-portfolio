@@ -1,15 +1,31 @@
 'use client';
 
 import * as React from 'react';
-import { Mountain } from 'lucide-react';
-import { ThemeToggle } from '@/components/theme-toggle';
+import {
+  ChevronDown,
+  Menu,
+  Mountain,
+} from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 import Link from 'next/link';
 
-const navLinks = [
+const primaryLinks = [
   { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#contact', label: 'Contact' },
+];
+
+const secondaryLinks = [
   { href: '/journal-articles', label: 'Journal Articles' },
   { href: '/other-publications', label: 'Other Publications' },
   { href: '/honors-and-awards', label: 'Honors & Awards' },
@@ -19,8 +35,10 @@ const navLinks = [
   { href: '/camera-roll', label: 'Camera Roll' },
   { href: '/literature-corner', label: 'Literature Corner' },
   { href: '/media-coverage', label: 'Media Coverage' },
-  { href: '/#contact', label: 'Contact' },
 ];
+
+const allLinks = [...primaryLinks.slice(0,3), ...secondaryLinks, primaryLinks[3]];
+
 
 export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -47,20 +65,36 @@ export function Header() {
           <Mountain className="h-6 w-6 text-primary" />
           <span>Aayush Bhatta</span>
         </Link>
-        <nav className="hidden items-center gap-4 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              {link.label}
-            </Link>
+        <nav className="hidden items-center gap-2 md:flex">
+          {primaryLinks.map((link) => (
+            <Button variant="link" asChild key={link.href}>
+                <Link
+                href={link.href}
+                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-primary px-3"
+                >
+                {link.label}
+                </Link>
+            </Button>
           ))}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="link">
+                More
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {secondaryLinks.map((link) => (
+                <DropdownMenuItem key={link.href} asChild>
+                  <Link href={link.href}>{link.label}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
         <div className="flex items-center gap-2">
-           <ThemeToggle />
-           <Sheet open={open} onOpenChange={setOpen}>
+          <ThemeToggle />
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
@@ -69,12 +103,16 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="flex flex-col gap-4 p-4">
-              <Link href="/" className="flex items-center gap-2 text-xl font-bold" onClick={() => setOpen(false)}>
+                <Link
+                  href="/"
+                  className="flex items-center gap-2 text-xl font-bold"
+                  onClick={() => setOpen(false)}
+                >
                   <Mountain className="h-6 w-6 text-primary" />
                   <span>Aayush Bhatta</span>
                 </Link>
                 <nav className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
+                  {allLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
