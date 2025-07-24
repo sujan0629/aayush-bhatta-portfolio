@@ -36,23 +36,23 @@ export default function AdminDashboardPage() {
           <div className="grid gap-8 md:grid-cols-2">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2"><Newspaper /> Manage Blog</CardTitle>
-                <CardDescription>Create, edit, and delete blog posts.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button asChild>
-                  <Link href="/admin/blog">Go to Blog Management</Link>
-                </Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
                 <CardTitle className="flex items-center gap-2"><FileText /> Manage Projects</CardTitle>
                 <CardDescription>Create, edit, and delete projects.</CardDescription>
               </CardHeader>
               <CardContent>
                 <Button asChild>
                   <Link href="/admin/projects">Go to Project Management</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><Newspaper /> Manage Blog</CardTitle>
+                <CardDescription>Create, edit, and delete blog posts.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild>
+                  <Link href="/admin/blog">Go to Blog Management</Link>
                 </Button>
               </CardContent>
             </Card>

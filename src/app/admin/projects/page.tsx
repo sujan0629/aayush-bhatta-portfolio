@@ -1,266 +1,159 @@
 'use client';
 
 import * as React from 'react';
-import { useForm, useFieldArray } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Trash } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { PlusCircle, Trash2, Pencil, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+import { Project } from '@/lib/data';
+import Image from 'next/image';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
-const projectSchema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  slug: z.string().min(1, 'Slug is required'),
-  category: z.string().min(1, 'Category is required'),
-  description: z.string().min(1, 'Short description is required'),
-  longDescription: z.string().min(1, 'Long description is required'),
-  image: z.string().url('Must be a valid URL'),
-  hint: z.string().min(1, 'Image hint is required'),
-  tags: z.array(z.object({ value: z.string().min(1, 'Tag cannot be empty') })),
-  links: z.object({
-    github: z.string().url().optional().or(z.literal('')),
-    report: z.string().optional(),
-  }),
-});
 
-type ProjectFormValues = z.infer<typeof projectSchema>;
-
-export default function ProjectAdminPage() {
-  const { toast } = useToast();
+export default function ManageProjectsPage() {
   const router = useRouter();
+  const { toast } = useToast();
+  const [projects, setProjects] = React.useState<Project[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     const token = localStorage.getItem('auth_token');
     if (!token) {
       router.replace('/login');
+      return;
     }
-  }, [router]);
 
-  const form = useForm<ProjectFormValues>({
-    resolver: zodResolver(projectSchema),
-    defaultValues: {
-      title: '',
-      slug: '',
-      category: '',
-      description: '',
-      longDescription: '',
-      image: '',
-      hint: '',
-      tags: [{ value: '' }],
-      links: {
-        github: '',
-        report: '',
-      },
-    },
-  });
+    async function fetchProjects() {
+      try {
+        const response = await fetch('/api/projects');
+        if (!response.ok) throw new Error('Failed to fetch projects');
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        toast({
+          variant: 'destructive',
+          title: 'Error',
+          description: 'Could not fetch projects.',
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    }
 
-  const { fields, append, remove } = useFieldArray({
-    control: form.control,
-    name: 'tags',
-  });
+    fetchProjects();
+  }, [router, toast]);
 
-  const onSubmit = async (data: ProjectFormValues) => {
-    const formattedData = {
-      ...data,
-      tags: data.tags.map(t => t.value),
-    };
-    
+  const handleDelete = async (slug: string) => {
     try {
-      const response = await fetch('/api/projects', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formattedData),
+      const response = await fetch(`/api/projects/${slug}`, {
+        method: 'DELETE',
       });
 
       if (!response.ok) {
-        throw new Error('Failed to create project');
+        throw new Error('Failed to delete project');
       }
 
+      setProjects(projects.filter((p) => p.slug !== slug));
       toast({
-        title: 'Project Created!',
-        description: 'The new project has been added successfully.',
+        title: 'Project Deleted',
+        description: 'The project has been removed successfully.',
       });
-      form.reset();
     } catch (error) {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Something went wrong while creating the project.',
+        description: 'Something went wrong while deleting the project.',
       });
     }
   };
+
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1 py-16">
         <div className="container mx-auto px-4">
-          <Card className="max-w-4xl mx-auto">
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-4xl font-bold tracking-tight">Manage Projects</h1>
+            <Button asChild>
+              <Link href="/admin/projects/new">
+                <PlusCircle className="mr-2 h-5 w-5" />
+                Add New Project
+              </Link>
+            </Button>
+          </div>
+
+          <Card>
             <CardHeader>
-              <CardTitle>Manage Projects</CardTitle>
+              <CardTitle>Existing Projects</CardTitle>
+              <CardDescription>View, edit, or delete your existing projects.</CardDescription>
             </CardHeader>
             <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                  <FormField
-                    control={form.control}
-                    name="title"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Title</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Project Title" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="slug"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Slug</FormLabel>
-                        <FormControl>
-                          <Input placeholder="project-title-slug" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="category"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Category</FormLabel>
-                        <FormControl>
-                          <Input placeholder="e.g., Academic Project" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Short Description</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="A brief summary of the project" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="longDescription"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Long Description</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="A detailed description of the project" rows={5} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="image"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Image URL</FormLabel>
-                        <FormControl>
-                          <Input placeholder="https://placehold.co/600x400" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="hint"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Image Hint</FormLabel>
-                        <FormControl>
-                          <Input placeholder="e.g., building blueprint" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <div>
-                    <FormLabel>Tags</FormLabel>
-                    {fields.map((field, index) => (
-                      <FormField
-                        key={field.id}
-                        control={form.control}
-                        name={`tags.${index}.value`}
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <div className="flex items-center gap-2">
-                                <Input placeholder={`Tag ${index + 1}`} {...field} />
-                                <Button type="button" variant="destructive" size="icon" onClick={() => remove(index)}>
-                                  <Trash className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    ))}
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      className="mt-2"
-                      onClick={() => append({ value: '' })}
-                    >
-                      Add Tag
-                    </Button>
-                  </div>
-                  <FormField
-                    control={form.control}
-                    name="links.github"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>GitHub Link</FormLabel>
-                        <FormControl>
-                          <Input placeholder="https://github.com/..." {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                   <FormField
-                    control={form.control}
-                    name="links.report"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Report Slug</FormLabel>
-                        <FormControl>
-                          <Input placeholder="e.g., seismic-analysis-report" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit">Create Project</Button>
-                </form>
-              </Form>
+              {isLoading ? (
+                <p>Loading projects...</p>
+              ) : (
+                <div className="space-y-4">
+                  {projects.map((project) => (
+                    <div key={project.slug} className="flex items-center justify-between p-4 border rounded-lg">
+                      <div className="flex items-center gap-4">
+                        <Image src={project.image} alt={project.title} width={80} height={60} className="rounded-md object-cover" />
+                        <div>
+                          <h3 className="font-semibold">{project.title}</h3>
+                          <p className="text-sm text-muted-foreground">{project.category}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                         <Button variant="outline" size="sm" asChild>
+                           <Link href={`/projects/${project.slug}`} target="_blank">
+                            <ExternalLink className="mr-2" /> View
+                           </Link>
+                         </Button>
+                         <Button variant="outline" size="icon" asChild>
+                           <Link href={`/admin/projects/edit/${project.slug}`}>
+                            <Pencil className="h-4 w-4" />
+                           </Link>
+                         </Button>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="destructive" size="icon">
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                This action cannot be undone. This will permanently delete the project
+                                and remove its data from our servers.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction onClick={() => handleDelete(project.slug)}>
+                                Continue
+                              </AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
