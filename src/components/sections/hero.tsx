@@ -1,12 +1,24 @@
 import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import { Download, Send } from 'lucide-react';
+import Image from 'next/image';
 
 export function Hero() {
   return (
-    <section id="home" className="relative h-[80vh] min-h-[600px] flex items-center bg-background">
+    <section id="home" className="relative h-[80vh] min-h-[600px] flex items-center justify-center text-center">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://placehold.co/1920x1080"
+          alt="Modern architecture background"
+          layout="fill"
+          objectFit="cover"
+          className="opacity-20"
+          data-ai-hint="modern architecture"
+        />
+        <div className="absolute inset-0 bg-background/80" />
+      </div>
       <div className="container mx-auto px-4 z-10">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
             Aayush Bhatta
           </h1>
