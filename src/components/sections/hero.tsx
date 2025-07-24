@@ -4,7 +4,7 @@ import { Download, Send } from 'lucide-react';
 
 export function Hero() {
   return (
-    <section id="home" className="relative h-[85vh] min-h-[600px] flex items-center bg-background">
+    <section id="home" className="relative h-[80vh] min-h-[600px] flex items-center bg-background">
       <div className="container mx-auto px-4 z-10">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">

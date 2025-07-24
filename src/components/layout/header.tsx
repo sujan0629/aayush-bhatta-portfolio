@@ -41,24 +41,11 @@ const allLinks = [...primaryLinks.slice(0,6), ...secondaryLinks, primaryLinks[6]
 
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 shadow-md backdrop-blur-sm'
-          : 'bg-transparent'
-      }`}
+      className="sticky top-0 z-50 w-full border-b bg-background"
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold">
